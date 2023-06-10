@@ -1,6 +1,7 @@
 package mk.ukim.finki.nbnp.studentmanagementsystem.model.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "subject")
@@ -27,6 +28,12 @@ public class Subject {
 
     @Column(name = "code", nullable = false, length = 9)
     private String code;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "subject_prerequisite",
+        joinColumns = @JoinColumn(name = "subject_id"),
+        inverseJoinColumns = @JoinColumn(name = "prerequisite_id"))
+    private List<Subject> prerequisites;
 
     public String getCode() {
         return code;
@@ -74,6 +81,14 @@ public class Subject {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Subject> getPrerequisites() {
+        return prerequisites;
+    }
+
+    public void setPrerequisites(List<Subject> prerequisites) {
+        this.prerequisites = prerequisites;
     }
 
     public Long getId() {

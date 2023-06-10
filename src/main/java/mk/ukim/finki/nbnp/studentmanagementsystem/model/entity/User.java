@@ -1,6 +1,7 @@
 package mk.ukim.finki.nbnp.studentmanagementsystem.model.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -10,7 +11,7 @@ public class User {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "person_id", nullable = false)
     private Person person;
 
@@ -37,6 +38,18 @@ public class User {
 
     @Column(name = "total_credits")
     private Integer totalCredits;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "professor_subject",
+        joinColumns = @JoinColumn(name = "professor_id"),
+        inverseJoinColumns = @JoinColumn(name = "subject_id"))
+    private List<Subject> taughtSubjects;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_role",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private List<Role> roles;
 
     public Integer getTotalCredits() {
         return totalCredits;
@@ -108,6 +121,22 @@ public class User {
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    public List<Subject> getTaughtSubjects() {
+        return taughtSubjects;
+    }
+
+    public void setTaughtSubjects(List<Subject> taughtSubjects) {
+        this.taughtSubjects = taughtSubjects;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     public Long getId() {
