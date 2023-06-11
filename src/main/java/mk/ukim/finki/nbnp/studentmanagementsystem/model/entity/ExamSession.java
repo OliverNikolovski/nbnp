@@ -17,7 +17,6 @@ public class ExamSession {
     @Column(name = "end_date", nullable = false)
     private LocalDate endDate;
 
-    @Lob
     @Column(name = "session")
     private String session;
 

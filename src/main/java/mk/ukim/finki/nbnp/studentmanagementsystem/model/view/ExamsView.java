@@ -28,7 +28,6 @@ public class ExamsView {
     @Column(name = "subject_id")
     private Long subjectId;
 
-    @Lob
     @Column(name = "session")
     private String session;
 

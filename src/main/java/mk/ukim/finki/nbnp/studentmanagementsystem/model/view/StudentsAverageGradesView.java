@@ -16,7 +16,6 @@ public class StudentsAverageGradesView {
     @Column(name = "indeks")
     private String indeks;
 
-    @Lob
     @Column(name = "ime_prezime")
     private String imePrezime;
 

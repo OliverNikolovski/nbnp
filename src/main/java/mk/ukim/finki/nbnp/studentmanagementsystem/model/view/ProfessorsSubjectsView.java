@@ -16,7 +16,6 @@ public class ProfessorsSubjectsView {
             updatable = false)
     private Long professorId;
 
-    @Lob
     @Column(name = "professor_name")
     private String professorName;
 

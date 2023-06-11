@@ -5,7 +5,9 @@ import mk.ukim.finki.nbnp.studentmanagementsystem.model.entity.EnrolledSubjectId
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface EnrolledSubjectRepository extends JpaRepository<EnrolledSubject, EnrolledSubjectId> {
     @Query(nativeQuery = true,
             value = "CALL enroll_student_in_subject(:p_student_id, :p_semester_id, :p_subject_id);")

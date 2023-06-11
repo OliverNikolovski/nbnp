@@ -1,16 +1,22 @@
 package mk.ukim.finki.nbnp.studentmanagementsystem.repository.entity;
 
 import mk.ukim.finki.nbnp.studentmanagementsystem.model.entity.User;
+import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.UserPersonalInfoView;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.lang.NonNull;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
+@Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     @Query(nativeQuery = true, value = "SELECT is_regular_student(:p_student_id);")
     boolean isRegularStudent(@Param("p_student_id") Long userId);
 
+    // procedure can't be called with SELECT, this should be fixed
     @Query(nativeQuery = true,
             value = "SELECT insert_person_user(:p_first_name, :p_last_name, :p_birthdate, :p_embg, :p_gender, :p_city_id, :p_country_id, :p_nationality_id, :p_address, :p_phone_number, :p_personal_email, :p_password, :p_resume, :p_role);")
     void save(@Param("p_first_name") String firstName,
@@ -27,4 +33,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
                 @Param("p_password") String password,
                 @Param("p_resume") String resume,
                 @Param("p_role") String role);
+
+    Optional<User> findByFacultyEmail(String email);
 }
