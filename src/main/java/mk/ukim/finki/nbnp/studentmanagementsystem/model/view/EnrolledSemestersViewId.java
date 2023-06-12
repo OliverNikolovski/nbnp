@@ -20,6 +20,14 @@ public class EnrolledSemestersViewId implements Serializable {
         return studentId;
     }
 
+    public void setSemesterId(Long semesterId) {
+        this.semesterId = semesterId;
+    }
+
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
+    }
+
     public Long getSemesterId() {
         return semesterId;
     }

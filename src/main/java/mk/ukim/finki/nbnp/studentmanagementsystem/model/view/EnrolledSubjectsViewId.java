@@ -30,6 +30,18 @@ public class EnrolledSubjectsViewId implements Serializable {
         return studentId;
     }
 
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
+    }
+
+    public void setSubjectId(Long subjectId) {
+        this.subjectId = subjectId;
+    }
+
+    public void setSemesterId(Long semesterId) {
+        this.semesterId = semesterId;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(studentId, semesterId, subjectId);

@@ -70,6 +70,10 @@ public class UserPersonalInfoView {
     @Column(name = "total_credits")
     private Integer totalCredits;
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Integer getTotalCredits() {
         return totalCredits;
     }
@@ -146,6 +150,78 @@ public class UserPersonalInfoView {
         return id;
     }
 
-    protected UserPersonalInfoView() {
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setEmbg(String embg) {
+        this.embg = embg;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setPersonalEmail(String personalEmail) {
+        this.personalEmail = personalEmail;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public void setFacultyEmail(String facultyEmail) {
+        this.facultyEmail = facultyEmail;
+    }
+
+    public void setIndeks(String indeks) {
+        this.indeks = indeks;
+    }
+
+    public void setResume(String resume) {
+        this.resume = resume;
+    }
+
+    public void setYearOfEnrollment(Integer yearOfEnrollment) {
+        this.yearOfEnrollment = yearOfEnrollment;
+    }
+
+    public void setAverageGrade(Double averageGrade) {
+        this.averageGrade = averageGrade;
+    }
+
+    public void setTotalCredits(Integer totalCredits) {
+        this.totalCredits = totalCredits;
+    }
+
+    public UserPersonalInfoView() {
     }
 }

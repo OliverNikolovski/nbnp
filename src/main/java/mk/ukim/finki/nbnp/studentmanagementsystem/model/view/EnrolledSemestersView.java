@@ -15,11 +15,6 @@ public class EnrolledSemestersView {
     @EmbeddedId
     private EnrolledSemestersViewId id;
 
-    @Column(name = "semester_id",
-            insertable = false,
-            updatable = false)
-    private Long semesterId;
-
     @Column(name = "type", length = 10)
     private String type;
 
@@ -31,15 +26,6 @@ public class EnrolledSemestersView {
 
     @Column(name = "status")
     private String status;
-
-    @Column(name = "student_id",
-            insertable = false,
-            updatable = false)
-    private Long studentId;
-
-    public Long getStudentId() {
-        return studentId;
-    }
 
     public String getStatus() {
         return status;
@@ -57,10 +43,6 @@ public class EnrolledSemestersView {
         return type;
     }
 
-    public Long getSemesterId() {
-        return semesterId;
-    }
-
     public EnrolledSemestersViewId getId() {
         return id;
     }
@@ -69,6 +51,22 @@ public class EnrolledSemestersView {
         this.id = id;
     }
 
-    protected EnrolledSemestersView() {
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public EnrolledSemestersView() {
     }
 }

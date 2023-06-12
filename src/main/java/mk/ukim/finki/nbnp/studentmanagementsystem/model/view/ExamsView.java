@@ -1,5 +1,8 @@
 package mk.ukim.finki.nbnp.studentmanagementsystem.model.view;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Immutable;
 
 import javax.persistence.*;
@@ -8,6 +11,9 @@ import java.time.LocalDate;
 @Entity
 @Immutable
 @Table(name = "exams_view")
+@Getter
+@Setter
+@NoArgsConstructor
 public class ExamsView {
     @Id
     @Column(name = "exam_id")
@@ -40,7 +46,7 @@ public class ExamsView {
     @Column(name = "credits")
     private Integer credits;
 
-    @Column(name = "\"winter/summer\"")
+    @Column(name = "winter_summer")
     private String winterOrSummer;
 
     @Column(name = "grade")
@@ -54,67 +60,4 @@ public class ExamsView {
 
     @Column(name = "prof_last_name")
     private String profLastName;
-
-    public String getProfLastName() {
-        return profLastName;
-    }
-
-    public String getProfFirstName() {
-        return profFirstName;
-    }
-
-    public Long getProfessorId() {
-        return professorId;
-    }
-
-    public Integer getGrade() {
-        return grade;
-    }
-
-    public String getWinterOrSummer() {
-        return winterOrSummer;
-    }
-
-    public Integer getCredits() {
-        return credits;
-    }
-
-    public Integer getSemester() {
-        return semester;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public String getSession() {
-        return session;
-    }
-
-    public Long getSubjectId() {
-        return subjectId;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public String getStudentIndeks() {
-        return studentIndeks;
-    }
-
-    public Long getStudentId() {
-        return studentId;
-    }
-
-    public Long getExamId() {
-        return examId;
-    }
-
-    protected ExamsView() {
-    }
 }
