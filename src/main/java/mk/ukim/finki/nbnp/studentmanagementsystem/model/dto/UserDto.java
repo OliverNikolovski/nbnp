@@ -1,9 +1,9 @@
 package mk.ukim.finki.nbnp.studentmanagementsystem.model.dto;
 
-import mk.ukim.finki.nbnp.studentmanagementsystem.model.entity.Person;
 import mk.ukim.finki.nbnp.studentmanagementsystem.model.entity.Role;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserDto {
     private Long id;
@@ -22,7 +22,7 @@ public class UserDto {
 
     private Integer totalCredits;
 
-    private List<Role> roles;
+    private List<String> roles;
 
     public UserDto(Long id, String facultyEmail, String indeks, Boolean threeYearStudies,
                    Integer yearOfEnrollment, String resume, Double averageGrade, Integer totalCredits, List<Role> roles) {
@@ -34,7 +34,7 @@ public class UserDto {
         this.resume = resume;
         this.averageGrade = averageGrade;
         this.totalCredits = totalCredits;
-        this.roles = roles;
+        this.roles = roles.stream().map(Role::getAuthority).collect(Collectors.toList());
     }
 
     public Long getId() {
@@ -101,11 +101,11 @@ public class UserDto {
         this.totalCredits = totalCredits;
     }
 
-    public List<Role> getRoles() {
+    public List<String> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Role> roles) {
+    public void setRoles(List<String> roles) {
         this.roles = roles;
     }
 }

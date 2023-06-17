@@ -1,8 +1,8 @@
 package mk.ukim.finki.nbnp.studentmanagementsystem.service;
 
 import mk.ukim.finki.nbnp.studentmanagementsystem.exception.UserDoesNotExistException;
+import mk.ukim.finki.nbnp.studentmanagementsystem.factory.DtoFactory;
 import mk.ukim.finki.nbnp.studentmanagementsystem.model.dto.UserDto;
-import mk.ukim.finki.nbnp.studentmanagementsystem.model.entity.User;
 import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.EnrolledSemestersView;
 import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.EnrolledSubjectsView;
 import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.ExamsView;
@@ -21,15 +21,17 @@ import java.util.Optional;
 public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
     private final UserJdbcRepository userJdbcRepository;
+    private final DtoFactory dtoFactory;
 
-    public UserService(UserRepository userRepository, UserJdbcRepository userJdbcRepository) {
+    public UserService(UserRepository userRepository, UserJdbcRepository userJdbcRepository, DtoFactory dtoFactory) {
         this.userRepository = userRepository;
         this.userJdbcRepository = userJdbcRepository;
+        this.dtoFactory = dtoFactory;
     }
 
     public UserDto findUserByFacultyEmail(String email) throws UsernameNotFoundException {
         return userRepository.findByFacultyEmail(email)
-                .map(this::toUserDto)
+                .map(dtoFactory::toUserDto)
                 .orElseThrow(() -> new UsernameNotFoundException(email));
     }
 
@@ -41,7 +43,7 @@ public class UserService implements UserDetailsService {
 
     public UserDto findById(Long id) {
         return userRepository.findById(id)
-                .map(this::toUserDto)
+                .map(dtoFactory::toUserDto)
                 .orElseThrow(() -> new UserDoesNotExistException(id));
     }
 
@@ -60,11 +62,5 @@ public class UserService implements UserDetailsService {
 
     public List<ExamsView> getAllPassedExamsForStudent(Long id) {
         return userJdbcRepository.getAllPassedExamsForStudent(id);
-    }
-
-    private UserDto toUserDto(User user) {
-        return new UserDto(user.getId(), user.getFacultyEmail(), user.getIndeks(),
-                user.getThreeYearStudies(), user.getYearOfEnrollment(), user.getResume(), user.getAverageGrade(),
-                user.getTotalCredits(), user.getRoles());
     }
 }
