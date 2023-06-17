@@ -8,7 +8,7 @@ import {User} from "../models/user";
 })
 export class AuthenticationService {
 
-  private baseUrl = 'http://localhost:8080'
+  private readonly baseUrl = 'http://localhost:4200/api'
 
   constructor(private http: HttpClient) {
   }
@@ -22,25 +22,28 @@ export class AuthenticationService {
   }
 
   logout(): Observable<void> {
-    return this.http.get<void>(`${this.baseUrl}/logout`);
+    return this.http.post<void>(`${this.baseUrl}/logout`, {});
   }
   isUserAuthenticated(): boolean {
     return sessionStorage.getItem('user') != null;
   }
 
-  getAuthenticatedUser(): User | null {
+  // so slednive metodi go zapishuvame, chitame i brisheme logiraniot user od session storage
+  // ni treba da go chuvame vo session storage za site komponenti da mozat da znaat deka ima logiran korisnik
+  // i da mozat da pristapat do negovite informacii kako na primer ROLE
+  getAuthenticatedUserFromSessionStorage(): User {
     const userJsonString = sessionStorage.getItem('user');
     if (userJsonString) {
       return JSON.parse(userJsonString);
     }
-    return null;
+    throw Error("There is no authenticated user.");
   }
 
-  setAuthenticatedUser(user: User) {
+  writeAuthenticatedUserToSessionStorage(user: User) {
     sessionStorage.setItem('user', JSON.stringify(user));
   }
 
-  clearAuthenticatedUser() {
+  clearAuthenticatedUserFromSessionStorage() {
     sessionStorage.removeItem('user');
   }
 

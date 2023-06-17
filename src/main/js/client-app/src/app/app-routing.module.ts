@@ -10,7 +10,7 @@ import {ExamsComponent} from "./components/exams/exams.component";
 import {UserRequestsComponent} from "./components/user-requests/user-requests.component";
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '', redirectTo: '/home/info', pathMatch: 'full'},
   {
     path: 'home',
     component: HomeComponent,

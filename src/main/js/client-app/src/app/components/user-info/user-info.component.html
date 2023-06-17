@@ -1,1 +1,75 @@
-<h1>User Info</h1>
+<h1>Лични податоци</h1>
+<form [formGroup]="formGroup">
+  <div class="mb-3">
+    <label for="firstName" class="form-label">Име: </label>
+    <input type="text" class="form-control" id="firstName" [readOnly]="true" formControlName="firstName">
+  </div>
+  <div class="mb-3">
+    <label for="middleName" class="form-label">Средно име: </label>
+    <input type="text" class="form-control" id="middleName" [readOnly]="true" formControlName="middleName">
+  </div>
+  <div class="mb-3">
+    <label for="lastName" class="form-label">Презиме: </label>
+    <input type="text" class="form-control" id="lastName" [readOnly]="true" formControlName="lastName">
+  </div>
+  <div class="mb-3">
+    <label for="embg" class="form-label">ЕМБГ: </label>
+    <input type="text" class="form-control" id="embg" [readOnly]="true" formControlName="embg">
+  </div>
+  <div class="mb-3">
+    <label for="city" class="form-label">Град: </label>
+    <input type="text" class="form-control" id="city" [readOnly]="true" formControlName="city">
+  </div>
+  <div class="mb-3">
+    <label for="country" class="form-label">Земја: </label>
+    <input type="text" class="form-control" id="country" [readOnly]="true" formControlName="country">
+  </div>
+  <div class="mb-3">
+    <label for="nationality" class="form-label">Националност: </label>
+    <input type="text" class="form-control" id="nationality" [readOnly]="true" formControlName="nationality">
+  </div>
+  <div class="mb-3">
+    <label for="address" class="form-label">Адреса на живеење: </label>
+    <input type="text" class="form-control" id="address" [readOnly]="true" formControlName="address">
+  </div>
+  <div class="mb-3">
+    <label for="gender" class="form-label">Пол: </label>
+    <input type="text" class="form-control" id="gender" [readOnly]="true" formControlName="gender">
+  </div>
+  <div class="mb-3">
+    <label for="phoneNumber" class="form-label">Телефонски број: </label>
+    <input type="text" class="form-control" id="phoneNumber" [readOnly]="true" formControlName="phoneNumber">
+  </div>
+  <div class="mb-3">
+    <label for="birthDate" class="form-label">Датум на раѓање: </label>
+    <input type="text" class="form-control" id="birthDate" [readOnly]="true" formControlName="birthDate">
+  </div>
+  <div class="mb-3">
+    <label for="facultyEmail" class="form-label">Универзитетска е-пошта: </label>
+    <input type="text" class="form-control" id="facultyEmail" [readOnly]="true" formControlName="facultyEmail">
+  </div>
+  <div class="mb-3">
+    <label for="personalEmail" class="form-label">Приватна е-пошта: </label>
+    <input type="text" class="form-control" id="personalEmail" [readOnly]="true" formControlName="personalEmail">
+  </div>
+  <div class="mb-3" *ngIf="role === 'STUDENT'">
+    <label for="indeks" class="form-label">Индекс: </label>
+    <input type="text" class="form-control" id="indeks" [readOnly]="true" formControlName="indeks">
+  </div>
+  <div class="mb-3">
+    <label for="resume" class="form-label">Биографија: </label>
+    <input type="text" class="form-control" id="resume" [readOnly]="true" formControlName="resume">
+  </div>
+  <div class="mb-3" *ngIf="role === 'STUDENT'">
+    <label for="yearOfEnrollment" class="form-label">Година на упис: </label>
+    <input type="text" class="form-control" id="yearOfEnrollment" [readOnly]="true" formControlName="yearOfEnrollment">
+  </div>
+  <div class="mb-3" *ngIf="role === 'STUDENT'">
+    <label for="averageGrade" class="form-label">Просек: </label>
+    <input type="text" class="form-control" id="averageGrade" [readOnly]="true" formControlName="averageGrade">
+  </div>
+  <div class="mb-3" *ngIf="role === 'STUDENT'">
+    <label for="totalCredits" class="form-label">Освоени кредити: </label>
+    <input type="text" class="form-control" id="totalCredits" [readOnly]="true" formControlName="totalCredits">
+  </div>
+</form>

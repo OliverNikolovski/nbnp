@@ -16,7 +16,7 @@ export class NavbarComponent {
   onLogout() {
     this._authService.logout()
       .subscribe(() => {
-        this._authService.clearAuthenticatedUser();
+        this._authService.clearAuthenticatedUserFromSessionStorage();
         this._router.navigate(['/login']);
       })
   }

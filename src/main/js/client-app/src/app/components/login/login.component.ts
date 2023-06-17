@@ -30,10 +30,10 @@ export class LoginComponent implements OnInit {
     this._authService.login(this.email, this.password)
       .subscribe({
         next: user => {
-          this._authService.setAuthenticatedUser(user);
+          this._authService.writeAuthenticatedUserToSessionStorage(user);
           this._router.navigate(['/']);
         },
-        error: error => this._toastr.error("Invalid username or password.", "Error!")
+        error: () => this._toastr.error("Invalid username or password.", "Error!")
       })
   }
 
