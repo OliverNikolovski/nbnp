@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../services/authentication.service";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder,
               private _authService: AuthenticationService,
-              private _router: Router) {
+              private _router: Router,
+              private _toastr: ToastrService) {
     this.loginForm = this._formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -31,7 +33,7 @@ export class LoginComponent implements OnInit {
           this._authService.setAuthenticatedUser(user);
           this._router.navigate(['/']);
         },
-        error: error => console.log(error)
+        error: error => this._toastr.error("Invalid username or password.", "Error!")
       })
   }
 

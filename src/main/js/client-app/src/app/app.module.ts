@@ -14,6 +14,8 @@ import {EnrolledSemestersComponent} from "./components/enrolled-semesters/enroll
 import {SubjectsComponent} from "./components/subjects/subjects.component";
 import {ExamsComponent} from "./components/exams/exams.component";
 import {UserRequestsComponent} from "./components/user-requests/user-requests.component";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import {UserRequestsComponent} from "./components/user-requests/user-requests.co
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
