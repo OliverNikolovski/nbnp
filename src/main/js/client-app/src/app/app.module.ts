@@ -15,7 +15,9 @@ import {SubjectsComponent} from "./components/subjects/subjects.component";
 import {ExamsComponent} from "./components/exams/exams.component";
 import {UserRequestsComponent} from "./components/user-requests/user-requests.component";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatSelectModule} from '@angular/material/select';
 import {ToastrModule} from "ngx-toastr";
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import {ToastrModule} from "ngx-toastr";
     HttpClientModule,
     RouterModule,
     BrowserAnimationsModule,
+    MatSelectModule,
+    MatTableModule,
     ToastrModule.forRoot()
   ],
   providers: [],

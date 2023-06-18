@@ -1,2 +1,21 @@
 <h1>Запишани семестри</h1>
-<h3>TODO</h3>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Семестар</th>
+    <th scope="col">Почетен датум</th>
+    <th scope="col">Краен датум</th>
+    <th scope="col">Статус</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let semester of enrolledSemesters$ | async; index as i">
+    <th scope="row">{{i + 1}}</th>
+    <td>{{semester.type}}</td>
+    <td>{{semester.startDate}}</td>
+    <td>{{semester.endDate}}</td>
+    <td>{{semester.status}}</td>
+  </tr>
+  </tbody>
+</table>

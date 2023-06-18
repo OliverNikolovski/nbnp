@@ -1,8 +1,8 @@
 package mk.ukim.finki.nbnp.studentmanagementsystem.api;
 
+import mk.ukim.finki.nbnp.studentmanagementsystem.model.dto.EnrolledSemesterDto;
+import mk.ukim.finki.nbnp.studentmanagementsystem.model.dto.EnrolledSubjectDto;
 import mk.ukim.finki.nbnp.studentmanagementsystem.model.dto.UserDto;
-import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.EnrolledSemestersView;
-import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.EnrolledSubjectsView;
 import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.ExamsView;
 import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.UserPersonalInfoView;
 import mk.ukim.finki.nbnp.studentmanagementsystem.service.UserService;
@@ -20,12 +20,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    // this is just for testing if login works, should be removed later
-    @GetMapping
-    public String greeting() {
-        return "Successfully Logged in!";
-    }
-
     @GetMapping("/{id}")
     public UserDto findUserById(@PathVariable Long id) {
         return userService.findById(id);
@@ -37,13 +31,13 @@ public class UserController {
     }
 
     @GetMapping("/{id}/semesters")
-    public List<EnrolledSemestersView> getSemestersForStudent(@PathVariable Long id) {
+    public List<EnrolledSemesterDto> getSemestersForStudent(@PathVariable Long id) {
         return userService.getSemestersForStudent(id);
     }
 
     @GetMapping("/{studentId}/subjects")
-    public List<EnrolledSubjectsView> getSubjectsInSemesterForStudent(@PathVariable Long studentId,
-                                                                      @RequestParam Long semesterId) {
+    public List<EnrolledSubjectDto> getSubjectsInSemesterForStudent(@PathVariable Long studentId,
+                                                                    @RequestParam Long semesterId) {
         return userService.getSubjectsInSemesterForStudent(studentId, semesterId);
     }
 

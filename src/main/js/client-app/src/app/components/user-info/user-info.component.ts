@@ -25,12 +25,8 @@ export class UserInfoComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getPersonalInfoForUser(this.authenticatedUser.id)
       .subscribe({
-        next: value => {
-          this.formGroup.setValue(value);
-        },
-        error: err => {
-          this.toastr.error(err.error.message)
-        }
+        next: value => this.formGroup.setValue(value),
+        error: err => this.toastr.error(err.error.message)
       });
   }
 

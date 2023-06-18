@@ -2,9 +2,9 @@ package mk.ukim.finki.nbnp.studentmanagementsystem.service;
 
 import mk.ukim.finki.nbnp.studentmanagementsystem.exception.UserDoesNotExistException;
 import mk.ukim.finki.nbnp.studentmanagementsystem.factory.DtoFactory;
+import mk.ukim.finki.nbnp.studentmanagementsystem.model.dto.EnrolledSemesterDto;
+import mk.ukim.finki.nbnp.studentmanagementsystem.model.dto.EnrolledSubjectDto;
 import mk.ukim.finki.nbnp.studentmanagementsystem.model.dto.UserDto;
-import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.EnrolledSemestersView;
-import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.EnrolledSubjectsView;
 import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.ExamsView;
 import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.UserPersonalInfoView;
 import mk.ukim.finki.nbnp.studentmanagementsystem.repository.entity.UserRepository;
@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -52,12 +53,18 @@ public class UserService implements UserDetailsService {
         return personalInfo.orElseThrow(() -> new UserDoesNotExistException(id));
     }
 
-    public List<EnrolledSemestersView> getSemestersForStudent(Long id) {
-        return userJdbcRepository.getSemestersForStudent(id);
+    public List<EnrolledSemesterDto> getSemestersForStudent(Long id) {
+        return userJdbcRepository.getSemestersForStudent(id)
+                .stream()
+                .map(dtoFactory::toEnrolledSemesterDto)
+                .collect(Collectors.toList());
     }
 
-    public List<EnrolledSubjectsView> getSubjectsInSemesterForStudent(Long studentId, Long semesterId) {
-        return userJdbcRepository.getSubjectsInSemesterForStudent(studentId, semesterId);
+    public List<EnrolledSubjectDto> getSubjectsInSemesterForStudent(Long studentId, Long semesterId) {
+        return userJdbcRepository.getSubjectsInSemesterForStudent(studentId, semesterId)
+                .stream()
+                .map(dtoFactory::toEnrolledSubjectDto)
+                .collect(Collectors.toList());
     }
 
     public List<ExamsView> getAllPassedExamsForStudent(Long id) {
