@@ -4,12 +4,15 @@ import mk.ukim.finki.nbnp.studentmanagementsystem.model.dto.EnrolledSemesterDto;
 import mk.ukim.finki.nbnp.studentmanagementsystem.model.dto.EnrolledSubjectDto;
 import mk.ukim.finki.nbnp.studentmanagementsystem.model.dto.UserDto;
 import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.ExamsView;
+import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.RequestsView;
 import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.UserPersonalInfoView;
 import mk.ukim.finki.nbnp.studentmanagementsystem.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+// mozete da se logirate so sledniot user:
+// dafina.dzambazovski.0605991465074@finki.ukim.mk
 @RestController
 @RequestMapping("/api")
 public class UserController {
@@ -44,6 +47,11 @@ public class UserController {
     @GetMapping("/{id}/exams")
     public List<ExamsView> getAllPassedExamsForStudent(@PathVariable Long id) {
         return userService.getAllPassedExamsForStudent(id);
+    }
+
+    @GetMapping("/{id}/requests")
+    public List<RequestsView> getAllRequestsForStudent(@PathVariable Long id) {
+        return userService.getAllRequestsForStudent(id);
     }
 
 }

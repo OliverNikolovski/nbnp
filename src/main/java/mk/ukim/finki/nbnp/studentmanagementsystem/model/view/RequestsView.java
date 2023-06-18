@@ -1,5 +1,9 @@
 package mk.ukim.finki.nbnp.studentmanagementsystem.model.view;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Immutable;
 
 import javax.persistence.Column;
@@ -11,7 +15,11 @@ import java.time.LocalDate;
 @Entity
 @Immutable
 @Table(name = "request_request_type")
-public class RequestRequestType {
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+public class RequestsView {
     @Id
     @Column(name = "id")
     private Long id;
@@ -30,31 +38,4 @@ public class RequestRequestType {
 
     @Column(name = "name")
     private String name;
-
-    public String getName() {
-        return name;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public LocalDate getRequestDate() {
-        return requestDate;
-    }
-
-    public Long getRequestTypeId() {
-        return requestTypeId;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    protected RequestRequestType() {
-    }
 }

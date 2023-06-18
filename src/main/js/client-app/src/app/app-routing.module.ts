@@ -7,7 +7,7 @@ import {UserInfoComponent} from "./components/user-info/user-info.component";
 import {EnrolledSemestersComponent} from "./components/enrolled-semesters/enrolled-semesters.component";
 import {SubjectsComponent} from "./components/subjects/subjects.component";
 import {ExamsComponent} from "./components/exams/exams.component";
-import {UserRequestsComponent} from "./components/user-requests/user-requests.component";
+import {StudentRequestsComponent} from "./components/student-requests/student-requests.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/home/info', pathMatch: 'full'},
@@ -21,7 +21,7 @@ const routes: Routes = [
       {path: 'semesters', component: EnrolledSemestersComponent, canActivate: [AuthGuard.canActivate]},
       {path: 'subjects', component: SubjectsComponent, canActivate: [AuthGuard.canActivate]},
       {path: 'exams', component: ExamsComponent, canActivate: [AuthGuard.canActivate]},
-      {path: 'requests', component: UserRequestsComponent, canActivate: [AuthGuard.canActivate]},
+      {path: 'requests', component: StudentRequestsComponent, canActivate: [AuthGuard.canActivate]},
     ]
   },
   {path: 'login', component: LoginComponent, canActivate: [AuthGuard.canActivateLogin]}

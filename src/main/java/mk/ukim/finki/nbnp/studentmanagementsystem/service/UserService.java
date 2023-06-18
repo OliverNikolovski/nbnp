@@ -6,6 +6,7 @@ import mk.ukim.finki.nbnp.studentmanagementsystem.model.dto.EnrolledSemesterDto;
 import mk.ukim.finki.nbnp.studentmanagementsystem.model.dto.EnrolledSubjectDto;
 import mk.ukim.finki.nbnp.studentmanagementsystem.model.dto.UserDto;
 import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.ExamsView;
+import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.RequestsView;
 import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.UserPersonalInfoView;
 import mk.ukim.finki.nbnp.studentmanagementsystem.repository.entity.UserRepository;
 import mk.ukim.finki.nbnp.studentmanagementsystem.repository.jdbc.UserJdbcRepository;
@@ -69,5 +70,9 @@ public class UserService implements UserDetailsService {
 
     public List<ExamsView> getAllPassedExamsForStudent(Long id) {
         return userJdbcRepository.getAllPassedExamsForStudent(id);
+    }
+
+    public List<RequestsView> getAllRequestsForStudent(Long id) {
+        return userJdbcRepository.getAllRequestsForStudent(id);
     }
 }

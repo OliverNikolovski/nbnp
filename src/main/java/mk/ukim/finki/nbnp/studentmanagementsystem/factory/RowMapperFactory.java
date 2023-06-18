@@ -96,4 +96,17 @@ public class RowMapperFactory {
         };
     }
 
+    public RowMapper<RequestsView> getRequestViewRowMapper() {
+        return (rs, rowNum) -> {
+            RequestsView view = new RequestsView();
+            view.setId(rs.getLong("id"));
+            view.setUserId(rs.getLong("user_id"));
+            view.setRequestTypeId(rs.getLong("request_type_id"));
+            view.setRequestDate(rs.getDate("request_date").toLocalDate());
+            view.setStatus(rs.getString("status"));
+            view.setName(rs.getString("name"));
+            return view;
+        };
+    }
+
 }

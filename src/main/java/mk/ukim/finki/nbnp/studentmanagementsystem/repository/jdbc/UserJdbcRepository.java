@@ -1,10 +1,7 @@
 package mk.ukim.finki.nbnp.studentmanagementsystem.repository.jdbc;
 
 import mk.ukim.finki.nbnp.studentmanagementsystem.factory.RowMapperFactory;
-import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.EnrolledSemestersView;
-import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.EnrolledSubjectsView;
-import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.ExamsView;
-import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.UserPersonalInfoView;
+import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.*;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -57,6 +54,13 @@ public class UserJdbcRepository {
     public List<ExamsView> getAllPassedExamsForStudent(Long studentId) {
         RowMapper<ExamsView> rowMapper = rowMapperFactory.getExamsViewRowMapper();
         String sql = "SELECT * FROM get_all_passed_exams_for_student(:studentId);";
+        MapSqlParameterSource params = new MapSqlParameterSource("studentId", studentId);
+        return jdbcTemplate.query(sql, params, rowMapper);
+    }
+
+    public List<RequestsView> getAllRequestsForStudent(Long studentId) {
+        RowMapper<RequestsView> rowMapper = rowMapperFactory.getRequestViewRowMapper();
+        String sql = "SELECT * FROM get_all_requests_for_student(:studentId);";
         MapSqlParameterSource params = new MapSqlParameterSource("studentId", studentId);
         return jdbcTemplate.query(sql, params, rowMapper);
     }

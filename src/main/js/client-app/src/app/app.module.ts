@@ -13,7 +13,7 @@ import {UserInfoComponent} from "./components/user-info/user-info.component";
 import {EnrolledSemestersComponent} from "./components/enrolled-semesters/enrolled-semesters.component";
 import {SubjectsComponent} from "./components/subjects/subjects.component";
 import {ExamsComponent} from "./components/exams/exams.component";
-import {UserRequestsComponent} from "./components/user-requests/user-requests.component";
+import {StudentRequestsComponent} from "./components/student-requests/student-requests.component";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import {ToastrModule} from "ngx-toastr";
@@ -29,7 +29,7 @@ import {MatTableModule} from "@angular/material/table";
     EnrolledSemestersComponent,
     SubjectsComponent,
     ExamsComponent,
-    UserRequestsComponent
+    StudentRequestsComponent
   ],
   imports: [
     BrowserModule,

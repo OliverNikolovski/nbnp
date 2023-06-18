@@ -4,6 +4,8 @@ import {Observable} from "rxjs";
 import {UserPersonalInfo} from "../models/user-personal-info";
 import {EnrolledSemester} from "../models/enrolled-semester";
 import {EnrolledSubject} from "../models/enrolled-subject";
+import {Exam} from "../models/exam";
+import {StudentRequest} from "../models/student-request";
 
 @Injectable({
   providedIn: 'root'
@@ -27,4 +29,11 @@ export class UserService {
     return this.http.get<EnrolledSubject[]>(`${this.baseUrl}/${studentId}/subjects?semesterId=${semesterId}`);
   }
 
+  getAllPassedExamsForStudent(id: number): Observable<Exam[]> {
+    return this.http.get<Exam[]>(`${this.baseUrl}/${id}/exams`);
+  }
+
+  getAllRequestsForStudent(id: number): Observable<StudentRequest[]> {
+    return this.http.get<StudentRequest[]>(`${this.baseUrl}/${id}/requests`);
+  }
 }
