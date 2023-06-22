@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @Entity
 @Immutable
@@ -38,4 +40,7 @@ public class RequestsView {
 
     @Column(name = "name")
     private String name;
+
+    @Column(name = "description")
+    private String description;
 }

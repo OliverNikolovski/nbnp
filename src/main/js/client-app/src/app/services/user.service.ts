@@ -12,7 +12,7 @@ import {StudentRequest} from "../models/student-request";
 })
 export class UserService {
 
-  private readonly baseUrl = 'http://localhost:4200/api'
+  private readonly baseUrl = 'http://localhost:4200/api/users'
 
   constructor(private http: HttpClient) {
   }

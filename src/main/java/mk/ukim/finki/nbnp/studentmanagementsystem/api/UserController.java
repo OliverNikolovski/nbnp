@@ -14,7 +14,7 @@ import java.util.List;
 // mozete da se logirate so sledniot user:
 // dafina.dzambazovski.0605991465074@finki.ukim.mk
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/users")
 public class UserController {
 
     private final UserService userService;

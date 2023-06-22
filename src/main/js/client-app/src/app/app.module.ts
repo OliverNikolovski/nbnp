@@ -18,6 +18,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import {ToastrModule} from "ngx-toastr";
 import {MatTableModule} from "@angular/material/table";
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import {MatTableModule} from "@angular/material/table";
     BrowserAnimationsModule,
     MatSelectModule,
     MatTableModule,
+    MatButtonModule,
+    MatInputModule,
     ToastrModule.forRoot()
   ],
   providers: [],

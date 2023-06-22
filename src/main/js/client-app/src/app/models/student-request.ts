@@ -5,4 +5,5 @@ export interface StudentRequest {
   requestDate: Date;
   status: string;
   name: string;
+  description: string;
 }

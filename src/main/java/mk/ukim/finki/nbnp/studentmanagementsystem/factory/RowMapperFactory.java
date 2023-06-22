@@ -105,6 +105,7 @@ public class RowMapperFactory {
             view.setRequestDate(rs.getDate("request_date").toLocalDate());
             view.setStatus(rs.getString("status"));
             view.setName(rs.getString("name"));
+            view.setDescription(rs.getString("description"));
             return view;
         };
     }
