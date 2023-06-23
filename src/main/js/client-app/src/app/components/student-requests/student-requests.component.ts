@@ -5,7 +5,6 @@ import {AuthenticationService} from "../../services/authentication.service";
 import {StudentRequest} from "../../models/student-request";
 import {RequestService} from "../../services/request.service";
 import {RequestType} from "../../models/request-type";
-import {MatOptionSelectionChange} from "@angular/material/core";
 import {mergeMap} from "rxjs";
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {RequestCreate} from "../request-objects/request-create";
@@ -37,10 +36,7 @@ export class StudentRequestsComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getAllRequestsForStudent(this.authenticatedUser.id)
-      .subscribe(requests => {
-        console.log(requests);
-        this.requests = requests;
-      });
+      .subscribe(requests => this.requests = requests);
 
     this.requestService.getAllRequestTypes()
       .subscribe(requestTypes => this.requestTypes = requestTypes);

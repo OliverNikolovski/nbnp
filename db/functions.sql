@@ -6,7 +6,8 @@ begin
     return query
         select *
         from enrolled_semesters_view
-        where student_id = p_student_id;
+        where student_id = p_student_id
+        order by semester_id desc;
 end;
 $$ language plpgsql;
 
@@ -87,21 +88,22 @@ create or replace function get_all_requests_for_student(p_student_id bigint)
 $$
 begin
     return query
-    select *
-    from request_request_type
-    where user_id = p_student_id
-    order by id desc;
+        select *
+        from request_request_type
+        where user_id = p_student_id
+        order by id desc;
 end;
 $$ language plpgsql;
 
 
 -- kreira konkreten tip na baranje od student
 create or replace procedure create_request_for_student(p_student_id bigint, p_request_type_id bigint, p_description text)
-language plpgsql
-as $$
+    language plpgsql
+as
+$$
 begin
     insert into request (user_id, request_type_id, request_date, status, description)
-        values (p_student_id, p_request_type_id, current_timestamp, 'PENDING', p_description);
+    values (p_student_id, p_request_type_id, current_timestamp, 'PENDING', p_description);
 end;
 $$;
 

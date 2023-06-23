@@ -20,6 +20,9 @@ public class Semester {
     @Column(name = "end_date", nullable = false)
     private LocalDate endDate;
 
+    @Column(name = "active")
+    private Boolean active;
+
     public LocalDate getEndDate() {
         return endDate;
     }
