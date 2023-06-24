@@ -5,6 +5,7 @@ import mk.ukim.finki.nbnp.studentmanagementsystem.repository.entity.EnrolledSeme
 import mk.ukim.finki.nbnp.studentmanagementsystem.repository.entity.SemesterRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,4 +25,5 @@ public class SemesterService {
     public void enrollStudentInSemester(Long studentId, Long semesterId) {
         enrolledSemesterRepository.save(studentId, semesterId, 1L);
     }
+
 }

@@ -8,6 +8,7 @@ import mk.ukim.finki.nbnp.studentmanagementsystem.model.dto.UserDto;
 import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.ExamsView;
 import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.RequestsView;
 import mk.ukim.finki.nbnp.studentmanagementsystem.model.view.UserPersonalInfoView;
+import mk.ukim.finki.nbnp.studentmanagementsystem.repository.entity.EnrolledSubjectRepository;
 import mk.ukim.finki.nbnp.studentmanagementsystem.repository.entity.UserRepository;
 import mk.ukim.finki.nbnp.studentmanagementsystem.repository.jdbc.UserJdbcRepository;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,7 +26,7 @@ public class UserService implements UserDetailsService {
     private final UserJdbcRepository userJdbcRepository;
     private final DtoFactory dtoFactory;
 
-    public UserService(UserRepository userRepository, UserJdbcRepository userJdbcRepository, DtoFactory dtoFactory) {
+    public UserService(UserRepository userRepository, UserJdbcRepository userJdbcRepository, DtoFactory dtoFactory, EnrolledSubjectRepository enrolledSubjectRepository) {
         this.userRepository = userRepository;
         this.userJdbcRepository = userJdbcRepository;
         this.dtoFactory = dtoFactory;

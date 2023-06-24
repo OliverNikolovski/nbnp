@@ -387,7 +387,9 @@ begin
 end;
 $$;
 
--- zapisuvanje na student na predmet
+
+
+-- zapisuvanje na predmet od strana na student
 create or replace procedure enroll_student_in_subject(p_student_id bigint, p_semester_id bigint, p_subject_id bigint)
     language plpgsql
 as
@@ -411,5 +413,26 @@ begin
 
     insert into enrolled_subject(student_id, semester_id, subject_id, professor_id)
     values (p_student_id, p_semester_id, p_subject_id, v_professor_id);
+end;
+$$;
+
+create or replace procedure enroll_student_in_subjects(
+    p_student_id bigint,
+    p_semester_id bigint,
+    p_subject_ids bigint[]
+)
+    language plpgsql
+as
+$$
+begin
+    if array_length(p_subject_ids, 1) > 5 then
+        raise exception 'You cannot enroll more than 5 subjects.';
+    end if;
+
+    call enroll_student_in_subject(p_student_id, p_semester_id, p_subject_ids[1]);
+    call enroll_student_in_subject(p_student_id, p_semester_id, p_subject_ids[2]);
+    call enroll_student_in_subject(p_student_id, p_semester_id, p_subject_ids[3]);
+    call enroll_student_in_subject(p_student_id, p_semester_id, p_subject_ids[4]);
+    call enroll_student_in_subject(p_student_id, p_semester_id, p_subject_ids[5]);
 end;
 $$;

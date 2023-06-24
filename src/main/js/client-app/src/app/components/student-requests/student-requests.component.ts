@@ -7,7 +7,7 @@ import {RequestService} from "../../services/request.service";
 import {RequestType} from "../../models/request-type";
 import {mergeMap} from "rxjs";
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {RequestCreate} from "../request-objects/request-create";
+import {RequestCreate} from "../../request-objects/request-create";
 import {ToastrService} from "ngx-toastr";
 
 @Component({

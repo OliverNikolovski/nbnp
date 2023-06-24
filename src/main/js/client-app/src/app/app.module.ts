@@ -20,6 +20,7 @@ import {ToastrModule} from "ngx-toastr";
 import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
+import {AngularDualListBoxModule} from 'angular-dual-listbox';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import {MatInputModule} from '@angular/material/input';
     MatTableModule,
     MatButtonModule,
     MatInputModule,
+    AngularDualListBoxModule,
     ToastrModule.forRoot()
   ],
   providers: [],

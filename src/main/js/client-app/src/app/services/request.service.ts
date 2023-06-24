@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {RequestType} from "../models/request-type";
-import {RequestCreate} from "../components/request-objects/request-create";
+import {RequestCreate} from "../request-objects/request-create";
 
 @Injectable({
   providedIn: 'root'

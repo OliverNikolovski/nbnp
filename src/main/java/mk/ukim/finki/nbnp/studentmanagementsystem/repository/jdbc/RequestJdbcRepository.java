@@ -8,11 +8,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class RequestJdbcRepository {
     private final NamedParameterJdbcTemplate jdbcTemplate;
-    private final RowMapperFactory rowMapperFactory;
 
     public RequestJdbcRepository(NamedParameterJdbcTemplate jdbcTemplate, RowMapperFactory rowMapperFactory) {
         this.jdbcTemplate = jdbcTemplate;
-        this.rowMapperFactory = rowMapperFactory;
     }
 
     public void createRequestForStudent(Long studentId, Long requestTypeId, String description) {
